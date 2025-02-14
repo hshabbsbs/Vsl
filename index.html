@@ -1,48 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.cdnjs.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     @keyframes float {
       0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(5deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
       100% { transform: translateY(0px) rotate(0deg); }
     }
     
     @keyframes heartbeat {
-      0% { transform: scale(1); filter: brightness(1); }
-      25% { transform: scale(1.1); filter: brightness(1.2); }
-      40% { transform: scale(1); filter: brightness(1); }
-      60% { transform: scale(1.15); filter: brightness(1.3); }
-      100% { transform: scale(1); filter: brightness(1); }
+      0% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      40% { transform: scale(1); }
+      60% { transform: scale(1.15); }
+      100% { transform: scale(1); }
     }
     
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes sparkle {
-      0% { transform: scale(0) rotate(0deg); opacity: 0; }
-      50% { transform: scale(1) rotate(180deg); opacity: 1; }
-      100% { transform: scale(0) rotate(360deg); opacity: 0; }
     }
 
     @keyframes backgroundShimmer {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
-    }
-
-    @keyframes borderGlow {
-      0% { border-color: rgba(255, 182, 193, 0.5); }
-      50% { border-color: rgba(255, 105, 180, 0.8); }
-      100% { border-color: rgba(255, 182, 193, 0.5); }
-    }
-
-    @keyframes roseRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
     }
 
     body {
@@ -52,95 +42,72 @@
       justify-content: center;
       align-items: center;
       background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffd1ff, #ffc3a0, #ffb6c1);
-      background-size: 400% 400%;
+      background-size: 300% 300%;
       animation: backgroundShimmer 15s ease infinite;
       font-family: 'Cormorant Garamond', serif;
       overflow-x: hidden;
+      padding: 1rem;
     }
     
     .container {
-      max-width: 900px;
-      padding: 4rem;
+      width: 100%;
+      max-width: 600px;
+      padding: 1.5rem;
       background: rgba(255, 255, 255, 0.95);
-      border-radius: 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1),
-                  0 0 60px rgba(255, 182, 193, 0.3);
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       position: relative;
-      margin: 2rem;
-      animation: fadeIn 2s ease-in;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 182, 193, 0.3);
-      overflow: hidden;
+      animation: fadeIn 1.5s ease-in;
+      backdrop-filter: blur(5px);
+      margin: 1rem auto;
     }
-
-    .romantic-border {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border: 2px solid rgba(255, 182, 193, 0.5);
-      border-radius: 25px;
-      margin: 20px;
-      pointer-events: none;
-      animation: borderGlow 3s infinite;
-    }
-
-    .rose-corner {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff69b4' d='M12,2L8,12L2,12L7,17L5,22L12,19L19,22L17,17L22,12L16,12L12,2Z'/%3E%3C/svg%3E");
-      opacity: 0.6;
-    }
-
-    .top-left-rose { top: 10px; left: 10px; transform: rotate(-45deg); }
-    .top-right-rose { top: 10px; right: 10px; transform: rotate(45deg); }
-    .bottom-left-rose { bottom: 10px; left: 10px; transform: rotate(-135deg); }
-    .bottom-right-rose { bottom: 10px; right: 10px; transform: rotate(135deg); }
 
     .title {
       font-family: 'Great Vibes', cursive;
       text-align: center;
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: #ff69b4;
-      margin-bottom: 2rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      margin: 1rem 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     }
 
     .poem {
       white-space: pre-line;
-      line-height: 2;
+      line-height: 1.8;
       color: #4a4a4a;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       text-align: center;
-      padding: 1rem;
-      position: relative;
+      padding: 0.5rem;
     }
     
     .poem p {
-      margin-bottom: 2.5rem;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-bottom: 1.5rem;
       font-family: 'Dancing Script', cursive;
-      font-size: 1.6rem;
-      position: relative;
-      padding: 0 2rem;
+      font-size: 1.3rem;
+      padding: 0 0.5rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.6s ease;
     }
     
     .poem p::first-letter {
-      font-size: 2.5em;
+      font-size: 2em;
       color: #ff69b4;
       font-family: 'Great Vibes', cursive;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-      float: left;
-      padding: 0.1em 0.1em 0 0;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
     }
 
     .poem p.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .decorative-divider {
+      text-align: center;
+      color: #ff69b4;
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      opacity: 0.7;
     }
 
     .floating-elements {
@@ -151,55 +118,38 @@
       z-index: -1;
     }
 
-    .heart, .petal, .sparkle {
-      position: absolute;
-      pointer-events: none;
-    }
-
     .heart {
+      position: absolute;
       color: #ff69b4;
-      filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.5));
-    }
-
-    .petal {
-      width: 20px;
-      height: 20px;
-      background: radial-gradient(circle at 30% 30%, #ffb6c1, #ff69b4);
-      border-radius: 50% 0 50% 50%;
-      opacity: 0.6;
+      font-size: 0.8rem;
+      pointer-events: none;
+      filter: drop-shadow(0 0 2px rgba(255, 105, 180, 0.3));
     }
 
     .sparkle {
-      width: 12px;
-      height: 12px;
+      position: absolute;
+      width: 8px;
+      height: 8px;
       background: radial-gradient(circle, #fff, transparent 70%);
+      pointer-events: none;
     }
 
-    .decorative-divider {
-      text-align: center;
-      color: #ff69b4;
-      font-size: 2rem;
-      margin: 2rem 0;
-      opacity: 0.6;
-    }
-
-    @media (max-width: 768px) {
+    @media (max-width: 380px) {
       .container {
-        margin: 1rem;
-        padding: 2rem;
+        padding: 1rem;
       }
       
-      .poem {
+      .title {
+        font-size: 2rem;
+      }
+      
+      .poem p {
         font-size: 1.1rem;
       }
-
-      .poem p {
-        font-size: 1.3rem;
-        padding: 0 1rem;
-      }
-
-      .title {
-        font-size: 2.5rem;
+      
+      .decorative-divider {
+        font-size: 1.2rem;
+        margin: 0.8rem 0;
       }
     }
   </style>
@@ -207,12 +157,6 @@
 <body>
   <div class="floating-elements" id="floatingElements"></div>
   <div class="container">
-    <div class="romantic-border"></div>
-    <div class="rose-corner top-left-rose"></div>
-    <div class="rose-corner top-right-rose"></div>
-    <div class="rose-corner bottom-left-rose"></div>
-    <div class="rose-corner bottom-right-rose"></div>
-    
     <h1 class="title">I love you</h1>
     
     <div class="poem" id="poem">
@@ -236,35 +180,39 @@ Teri aankhon mein ujale ki halchal hai,
 Meri palkon pe ek khwab pal gaya.</p>
 
       <div class="decorative-divider">❧</div>
-        <p>Tu mehka hua ek basanti jhonka,
+
+      <p>Tu mehka hua ek basanti jhonka,
 Main patjhad ki baasi hawaa hoon.
 Teri hasi mein suraj ki taqat hai,
-Main shaam ka pighalta dhuan hoon.
-            
-        </p>
-        
+Main shaam ka pighalta dhuan hoon.</p>
+
       <div class="decorative-divider">❧</div>
-        <p>Tu shabd hai jo geet mein dhal chuka,
+
+      <p>Tu shabd hai jo geet mein dhal chuka,
 Main soch hoon jo ab tak beh rahi.
 Tu aakhri pankti ka thehra sa sukoon,
-Main kavita jo ab tak keh rahi.
-        </p>
+Main kavita jo ab tak keh rahi.</p>
+
       <div class="decorative-divider">❧</div>
-        <p>Tere hone se har lafz ek mehka geet hai,
+
+      <p>Tere hone se har lafz ek mehka geet hai,
 Meri zubaan pe bas tera hi preet hai.
 Tere saath zindagi ek ghazal ki chaap hai,
 Tere bina har pal bas ek suna sa aabshaar hai.</p>
+
       <div class="decorative-divider">❧</div>
-        <p>Tu kisi baag ka ek khilta gulshan,
+
+      <p>Tu kisi baag ka ek khilta gulshan,
 Main woh khushbu jo hawaaon mein likhi dastan.
 Teri yaadon ki barish mein bheegta hoon,
 Meri har boond sirf tere naam likhti hai.</p>
+
       <div class="decorative-divider">❧</div>
-        <p>Teri yaadon ki chaandni mein bheegta hoon,
+
+      <p>Teri yaadon ki chaandni mein bheegta hoon,
 Meri raaton ka har andhera dhalta hai.
 Tere saath har pal ek kahani likhta hai,
 Tere bina har alfaaz adhura lagta hai.</p>
-      <!-- Continue with the rest of the poem stanzas, adding decorative dividers between them -->
     </div>
   </div>
 
@@ -275,56 +223,47 @@ Tere bina har alfaaz adhura lagta hai.</p>
       
       if (type === 'heart') {
         element.innerHTML = '❤';
-        element.style.fontSize = Math.random() * 20 + 10 + 'px';
       }
       
-      element.style.left = Math.random() * 100 + 'vw';
-      element.style.top = Math.random() * 100 + 'vh';
-      element.style.animation = `float ${Math.random() * 3 + 2}s ease-in-out infinite`;
+      element.style.left = Math.random() * window.innerWidth + 'px';
+      element.style.top = Math.random() * window.innerHeight + 'px';
+      element.style.animation = `float ${Math.random() * 2 + 2}s ease-in-out infinite`;
       
       document.getElementById('floatingElements').appendChild(element);
       
-      setTimeout(() => element.remove(), 5000);
+      setTimeout(() => element.remove(), 3000);
     }
-
-    function addHoverEffect(element) {
-      element.addEventListener('mouseover', () => {
-        for (let i = 0; i < 3; i++) {
-          setTimeout(() => createFloatingElement('sparkle'), i * 100);
-        }
-      });
-    }
-
-    setInterval(() => createFloatingElement('heart'), 300);
-    setInterval(() => createFloatingElement('petal'), 400);
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          for (let i = 0; i < 5; i++) {
-            setTimeout(() => createFloatingElement('sparkle'), i * 100);
-          }
         }
       });
     }, { threshold: 0.2 });
 
     document.querySelectorAll('.poem p').forEach(p => {
       observer.observe(p);
-      addHoverEffect(p);
     });
 
-    // Add mouse trail effect
-    document.addEventListener('mousemove', (e) => {
+    // Reduce floating elements on mobile
+    const isMobile = window.innerWidth < 768;
+    const heartInterval = isMobile ? 1000 : 500;
+    
+    setInterval(() => createFloatingElement('heart'), heartInterval);
+
+    // Optimize touch events for mobile
+    document.addEventListener('touchmove', (e) => {
       if (Math.random() < 0.1) {
+        const touch = e.touches[0];
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
-        sparkle.style.left = e.pageX + 'px';
-        sparkle.style.top = e.pageY + 'px';
+        sparkle.style.left = touch.pageX + 'px';
+        sparkle.style.top = touch.pageY + 'px';
         document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 1000);
+        setTimeout(() => sparkle.remove(), 800);
       }
-    });
+    }, { passive: true });
   </script>
 </body>
 </html>
