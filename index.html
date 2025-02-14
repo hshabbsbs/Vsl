@@ -246,13 +246,13 @@ Tere bina har alfaaz adhura lagta hai.</p>
       observer.observe(p);
     });
 
-    // Reduce floating elements on mobile
+  
     const isMobile = window.innerWidth < 768;
     const heartInterval = isMobile ? 1000 : 500;
     
     setInterval(() => createFloatingElement('heart'), heartInterval);
 
-    // Optimize touch events for mobile
+  
     document.addEventListener('touchmove', (e) => {
       if (Math.random() < 0.1) {
         const touch = e.touches[0];
